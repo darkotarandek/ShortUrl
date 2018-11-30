@@ -27,9 +27,11 @@
     <div>Link na collection koji sadrži već gotove pozive prema API-u u Postmanu: <a href="https://www.getpostman.com/collections/555cb428f8c8c2136cb6" target="_blank">https://www.getpostman.com/collections/555cb428f8c8c2136cb6</a></div>
     <div>Nakon pokretanja Postmana, odabiremo <strong>import</strong> i onda <strong>import from link</strong> i u input polje napišemo gornji link. Nakon toga se naša lista poziva importala u Postman.</div>
     <div>Collection se sastoji od dva foldera. U prvom folderu (All Requests) se nalaze svi pozivi i svi pokriveni use caseovi. U drugom folderu (Basic Requests) se nalaze samo osnovni pozivi koji su definirani u zadatku.</div>  
-    <div>Link na H2 bazu podataka: <a href="http://localhost:8080/h2_console/" target="_blank">http://localhost:8080/h2_console/</a></div>
+	<div>Link na H2 bazu podataka: <a href="http://localhost:8080/h2_console/" target="_blank">http://localhost:8080/h2_console/</a></div>
+	<div><strong>Napomena:</strong> Nakon prvog pokretanja baze, moramo promijeniti JDBC URL u <strong>jdbc:h2:file:~/h2/testdb</strong> Ime ovog propertija i ostalih koji su bitni za postavljanje baze možemo naći u src/resources/application.properties</div>
+	<br />
 	<div>Link na maven: <a href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi</a>. Skidamo Binary zip archivu. Nakon toga, instaliramo maven i moramo postaviti maven/bin kao Enviroment variable u System Properties.</div>
-	<div>Napomena: Nakon preuzimanja koda s githubu, zbog nekog razloga se ne preuzme target folder u kojem se nalazi war arhiva, pa se mora navigirati u folder projekta i pokrenuti <strong>mvn clean install</strong>. Ova naredba će izbildati war arhivu koju poslije možemo koristiti da deployamo na server.</div>
+	<div><strong>Napomena:</strong> Nakon preuzimanja koda s githubu, zbog nekog razloga se nekad ne preuzme target folder u kojem se nalazi war arhiva, pa se mora navigirati u folder projekta i pokrenuti <strong>mvn clean install</strong>. Ova naredba će izbildati war arhivu koju poslije možemo koristiti da deployamo na server. Moramo paziti da sad sve pozive koje šaljemo prema API-u moraju izgledati <strong>http://localhost:8080/UrlShortener-0.0.1/</strong></div>
 </div>
   <div>
   	<h2 style="text-align: center;">Pokretanje</h2>
