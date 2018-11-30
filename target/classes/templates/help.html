@@ -23,13 +23,11 @@
 
 	<h2 style="text-align: center;">Instalacija</h2>
 	<div>git clone https://github.com/darkotarandek/ShortUrl</div>
-	<div>Za testiranje se može koristiti Postman. Link za Postman: <a href="https://www.getpostman.com/">https://www.getpostman.com/</a></div>
-    <div>Link na collection koji sadrži već gotove pozive prema API-u u Postmanu: <a href="https://www.getpostman.com/collections/555cb428f8c8c2136cb6" target="_blank">https://www.getpostman.com/collections/555cb428f8c8c2136cb6</a></div>
-    <div>Nakon pokretanja Postmana, odabiremo <strong>import</strong> i onda <strong>import from link</strong> i u input polje napišemo gornji link. Nakon toga se naša lista poziva importala u Postman.</div>
-    <div>Collection se sastoji od dva foldera. U prvom folderu (All Requests) se nalaze svi pozivi i svi pokriveni use caseovi. U drugom folderu (Basic Requests) se nalaze samo osnovni pozivi koji su definirani u zadatku.</div>  
+	<div>Za testiranje se može koristiti Postman. Link za Postman: <a href="https://www.getpostman.com/">https://www.getpostman.com/</a></div>  
 	<div>Link na H2 bazu podataka: <a href="http://localhost:8080/h2_console/" target="_blank">http://localhost:8080/h2_console/</a></div>
 	<div><strong>Napomena:</strong> Nakon prvog pokretanja baze, moramo promijeniti JDBC URL u <strong>jdbc:h2:file:~/h2/testdb</strong> Ime ovog propertija i ostalih koji su bitni za postavljanje baze možemo naći u src/resources/application.properties</div>
 	<br />
+	<h4>Sljedeći korak napraviti samo ako se target folder ne downloada kad napravimo git clone. Ako postoji target folder, onda ovaj korak možemo preskočiti.</h4>
 	<div>Link na maven: <a href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi</a>. Skidamo Binary zip archivu. Nakon toga, instaliramo maven i moramo postaviti maven/bin kao Enviroment variable u System Properties.</div>
 	<div><strong>Napomena:</strong> Nakon preuzimanja koda s githubu, zbog nekog razloga se nekad ne preuzme target folder u kojem se nalazi war arhiva, pa se mora navigirati u folder projekta i pokrenuti <strong>mvn clean install</strong>. Ova naredba će izbildati war arhivu koju poslije možemo koristiti da deployamo na server. Moramo paziti da sad sve pozive koje šaljemo prema API-u moraju izgledati <strong>http://localhost:8080/UrlShortener-0.0.1/</strong></div>
 </div>
@@ -45,6 +43,10 @@
     <h4>2. način pokretanja programa:</h4>
     <div>Ovaj način zahtjeva preuzimanje Apache Tomcat servera s adrese: <a href="https://tomcat.apache.org/download-90.cgi">https://tomcat.apache.org/download-90.cgi</a>. Nakon uspješnog preuzimanja, instaliramo program i tijekom instalacije označavamo <strong>Host Manager</strong> i upisujemo username i password. U našem slučaju, to je username: admin i lozinka: admin. Nakon toga pokrećemo server i u dijelu gdje piše <strong>WAR file to deploy</strong>, ubacujemo WAR file koji se nalazi u target folderu projekta. WAR file se zove <strong>UrlShortener-0.0.1.war</strong></div>
     <div>Nakon toga, WAR arhiva se deploya na server i sad možemo vidjeti našu aplikaciju na <a href="http://localhost:8080/UrlShortener-0.0.1/">http://localhost:8080/UrlShortener-0.0.1/</a>. Moramo obratiti pažnju da kad pokrećemo aplikaciju preko TOMCAT servera, onda se u naš browser doda i ime aplikacije, koja je u ovom slučaju <strong>UrlShortener-0.0.1</strong>. Više neće biti http://localhost:8080/, nego http://localhost:8080/UrlShortener-0.0.1/ i onda nakon toga dolaze imena poziva. Na primjer, /account, /register itd.</div>
+	<div>Link na collection koji sadrži već gotove pozive za 1.način pokretanja prema API-u u Postmanu: <a href="https://www.getpostman.com/collections/555cb428f8c8c2136cb6" target="_blank">https://www.getpostman.com/collections/555cb428f8c8c2136cb6</a></div>
+	<div>Link na collection koji sadrži već gotove pozive za 2.način pokretanja prema API-u u Postmanu: <a href="https://www.getpostman.com/collections/34f1a594da0146bcddaf" target="_blank">https://www.getpostman.com/collections/34f1a594da0146bcddaf</a></div>
+	<div>Nakon pokretanja Postmana, odabiremo <strong>import</strong> i onda <strong>import from link</strong> i u input polje napišemo gornji link. Nakon toga se naša lista poziva importala u Postman.</div>
+    <div>Collection se sastoji od dva foldera. U prvom folderu (All Requests) se nalaze svi pozivi i svi pokriveni use caseovi. U drugom folderu (Basic Requests) se nalaze samo osnovni pozivi koji su definirani u zadatku.</div>
 </div>
   <div>
   	<h2 style="text-align: center;">Korištenje</h2>
