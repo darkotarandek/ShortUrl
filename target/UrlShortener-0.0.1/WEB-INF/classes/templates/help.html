@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Url Shortener Instructions</title>
+</head>
+<body>
+<div>
+  <h1 style="text-align: center;">URL SHORTENER - DARKO TARANDEK!</h1>
+  <h2 style="text-align: center;">INSTRUCTIONS</h2>
+  <div>
+  	<h3 style="text-align: center;">Link projekta: <a href="https://github.com/darkotarandek/UrlShortener" target="_blank">https://github.com/darkotarandek/UrlShortener</a></h3>
+	<div>
+		Korištene tehnologije:
+		<ul>
+			<li>Spring Boot framework</li>
+			<li>H2 Database</li>
+		</ul>
+	</div>
+	<div>Svi dependenciji su deklarirani u pom-u.</div>
+	<div>Izvorni kod isporučen kao maven projekt.</div>
+	<div>Servis isporučen kao war arhiva.</div>
+
+	<h2 style="text-align: center;">Instalacija</h2>
+	<div>git clone https://github.com/darkotarandek/UrlShortener</div>
+	<div>Za testiranje se može koristiti Postman. Link za Postman: <a href="https://www.getpostman.com/">https://www.getpostman.com/</a></div>
+    <div>Link na collection koji sadrži već gotove pozive prema API-u u Postmanu: <a href="https://www.getpostman.com/collections/555cb428f8c8c2136cb6" target="_blank">https://www.getpostman.com/collections/555cb428f8c8c2136cb6</a></div>
+    <div>Nakon pokretanja Postmana, odabiremo <strong>import</strong> i onda <strong>import from link</strong> i u input polje napišemo gornji link. Nakon toga se naša lista poziva importala u Postman.</div>
+    <div>Collection se sastoji od dva foldera. U prvom folderu (All Requests) se nalaze svi pozivi i svi pokriveni use caseovi. U drugom folderu (Basic Requests) se nalaze samo osnovni pozivi koji su definirani u zadatku.</div>  
+    <div>Link na H2 bazu podataka: <a href="http://localhost:8080/h2_console/" target="_blank">http://localhost:8080/h2_console/</a></div>
+	<div>Link na maven: <a href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi</a>. Skidamo Binary zip archivu. Nakon toga, instaliramo maven i moramo postaviti maven/bin kao Enviroment variable u System Properties.</div>
+	<div>Napomena: Nakon preuzimanja koda s githubu, zbog nekog razloga se ne preuzme target folder u kojem se nalazi war arhiva, pa se mora navigirati u folder projekta i pokrenuti <strong>mvn clean install</strong>. Ova naredba će izbildati war arhivu koju poslije možemo koristiti da deployamo na server.</div>
+</div>
+  <div>
+  	<h2 style="text-align: center;">Pokretanje</h2>
+  	<div>Nakon uspješnog kloniranja projekta, postoje 2 načina pokretanja projekta:</div>
+    <ul>
+        <li>Pokretanje pomoću programskog okruženja kao: NetBeans, Eclipse, IntelliJ</li>
+        <li>Pokretanje pomoću Apache Tomcat servera gdje možemo deployati war arhivu</li>
+    </ul>
+    <h4>1. način pokretanja programa:</h4>
+    <div>Otvaramo izvorni kod pomoću nekog od gorenavedenih programskih okruženja i pokrećemo aplikaciju. U tom trenu će se pokrenuti projekt na adresi <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>. Sada možemo testirati aplikaciju pomoću prethodno navedenih poziva iz Postman collectiona.</div>
+    <h4>2. način pokretanja programa:</h4>
+    <div>Ovaj način zahtjeva preuzimanje Apache Tomcat servera s adrese: <a href="https://tomcat.apache.org/download-90.cgi">https://tomcat.apache.org/download-90.cgi</a>. Nakon uspješnog preuzimanja, instaliramo program i tijekom instalacije označavamo <strong>Host Manager</strong> i upisujemo username i password. U našem slučaju, to je username: admin i lozinka: admin. Nakon toga pokrećemo server i u dijelu gdje piše <strong>WAR file to deploy</strong>, ubacujemo WAR file koji se nalazi u target folderu projekta. WAR file se zove <strong>UrlShortener-0.0.1.war</strong></div>
+    <div>Nakon toga, WAR arhiva se deploya na server i sad možemo vidjeti našu aplikaciju na <a href="http://localhost:8080/UrlShortener-0.0.1/">http://localhost:8080/UrlShortener-0.0.1/</a>. Moramo obratiti pažnju da kad pokrećemo aplikaciju preko TOMCAT servera, onda se u naš browser doda i ime aplikacije, koja je u ovom slučaju <strong>UrlShortener-0.0.1</strong>. Više neće biti http://localhost:8080/, nego http://localhost:8080/UrlShortener-0.0.1/ i onda nakon toga dolaze imena poziva. Na primjer, /account, /register itd.</div>
+</div>
+  <div>
+  	<h2 style="text-align: center;">Korištenje</h2>
+	<div>
+		Zadatak je bio napraviti HTTP servis koji služi za skraćivanje URL-ova, sa sljedećim funkcionalnostima:
+		<ul>
+			<li>Registracija web adrese (API)</li>
+			<li>Redirekt klijenta sukladno skraćenom URL-u</li>
+			<li>Statistika posjeta (API)</li>
+		</ul>
+	<div>
+		Servis ima dva dijela:
+		<ul>
+			<li>Konfiguracijski</li>
+			<li>Korisnički</li>
+		</ul>
+	</div>
+	<div>
+		Konfiguracijski dio se poziva putem REST poziva sa JSON parametrima i služi za:
+		<ul>
+			<li>Otvaranje accounta</li>
+			<li>Registraciju URL-ova u „Shortener“ servis</li>
+			<li>Dohvat statistike</li>
+		</ul>
+	<div>
+	<div>
+		<h4 style="text-align: center;"> a) Otvaranje accounta</h4>
+		<div>Pokrećemo prvi poziv iz collectiona, odnosno /account POST metodu i proslijedimo JSON objekt u obliku:</div>
+		<div>
+			 { 
+			 	'AccountId' : 'darko'
+			 } 
+		</div>
+		<br />
+		<div>Prilikom uspješnog poziva dobit ćemo natrag JSON objekt u obliku: </div>
+		<div>
+			{
+				'Success': 'true',
+				'Description': 'Your account is opened',
+				'Password': 'y84jYo0t'
+			}
+		</div>
+		<br />
+		<div>i korisnik će biti zapisan u bazi podataka. Nakon toga, pokrećemo drugi poziv i u slučaju da korisnik već postoji dobit ćemo natrag JSON objekt u obliku:</div>
+		<div>
+			{
+				'Success': 'false',
+				'Description': 'Account already exists with that ID'
+			}
+		</div>
+		<br />
+		<div>Imeplementirana je i provjera objekta koji se šalje controlleru, pa u slučaju da AccountId nije definiran dobro ili uopće nije definiran, dobit ćemo natrag poruku da definiramo AccountId ispravno. Isto tako, provjerava se da je vrijednost koja se šalje controlleru bude tipa string. Nakon svakog poziva vraća se odgovarajući HTTP status code. Ovo se može vidjeti ako pokrenemo treći i četvrti poziv u folderu Account.</div>	
+ 	</div>
+ 	<br/>
+  	<div>
+	    <h4 style="text-align: center;">b)	Registraciju URL-ova u „Shortener“ servis</h4>
+	    <div>Pokrećemo prvi poziv iz Register foldera, odnosno /register POST metodu I proslijedimo JSON objekt u obliku:</div>
+	    <div>
+	        {
+	            'url': 'https://www.facebook.com',
+	            'redirectType': 301
+	        }
+	    </div>
+	    <br />
+	    <div>Prije nego pošaljemo poziv moramo postaviti Authorization header. Authorization header je u obliku key:value. Kao key koristimo 'Authorization', a kao value koristimo user:password i koristimo ': ' kao delimiter. Na primjer: darko:y84jYo0t, gdje je darko ime našeg korisnika, odnosno AccountId, a value naša lozinka koju smo dobili prilikom registracije.</div>
+	    <br />
+	    <div>U slučaju da je autentikacija prošla uspješno naš url će biti registriran i dobit ćemo povratni JSON objekt u obliku: </div>
+	    <div>
+	        {
+	            'shortUrl': https://localhost:8080/cxdsfusa
+	        }
+	    </div>
+	    <br />
+	    <div>i naš url će biti zapisan u bazu podataka. Ako pokrenemo šesti poziv iz Register foldera i pošaljemo request, u slučaju da korisnik nije autentificiran onda se vrati natrag JSON objekt u obliku:</div>
+	    <div>
+	        {
+	            'Description': 'Not Authenticated.'
+	        }
+	    </div>
+	    <br />
+	    <div>Imeplementirana je i provjera objekta koji se šalje controlleru i možemo ih provjeriti pokretanjem poziva koji se nalaze u Register folderu: 
+	    <ul>
+	    	<li>2. poziv - u slučaju da Url nije definiran dobro ili uopće nije definiran, dobit ćemo natrag poruku da definiramo Url ispravno</li>
+	    	<li>3. poziv - provjerava se da je vrijednost Url-a koja se šalje controlleru bude tipa string.</li>
+	    	<li>U slučaju da redirectType ne postoji, onda vraćamo zapisujemo 302 u bazu, a ako postoji, onda zapišemo broj kojeg smo dobili.</li>
+	    	<li>Provjerava se da je vrijednost redirectType-a koja se šalje controlleru bude tipa int.</li>
+	    	<li>4. poziv - korisnik je zaboravio postaviti Authorization header</li>
+	    	<li>5. poziv - korisnik je postavio Authorization header neispravno</li>
+	    </ul>
+	    <div>Nakon svakog poziva vraća se odgovarajuća poruka i HTTP status code. Svi ovi use caseovi se mogu provjeriti u Register folderu.</div>
+	</div>
+	<div>
+	    <h4 style="text-align: center;">c) Dohvat statistike</h4>
+	    <div>Pokrećemo prvi poziv iz Statistic foldera, odnosno /statistic/{AccountID} GET metodu. U ovom slučaju ne šaljemo ništa u request body jer je ovo GET poziv, ali moramo postaviti Authorization header kao u prethodnom koraku. Authorization header je u obliku key:value. Kao key koristimo 'Authorization', a kao value koristimo user:password i koristimo ': ' kao delimiter. Na primjer: darko:y84jYo0t, gdje je darko ime našeg korisnika, odnosno AccountId, a value naša lozinka koju smo dobili prilikom registracije.</div>
+	    <br />
+	    <div>Nakon toga pošaljemo request i u slučaju da je autentikacija prošla uspješno dobit ćemo povratni JSON objekt u obliku:</div>
+	    <div>
+	        {
+	            'https://www.facebook.com': 1, 
+	            'https://www.google.com': 3, 
+	            'https://www.twitter.com': 2
+	        }
+	    </div>
+	    <br />
+	    <div>gdje je ključ registrirani URL , a vrijednost broj pozivanja istog.</div>
+	    <br />
+	    <div>Ako pokrenemo treći poziv iz istog foldera, u slučaju da korisnik nije autentificiran onda se vrati natrag JSON objekt u obliku:</div>
+	    <div>
+	        {
+	            'Description': 'Not Authenticated.'
+	        }
+	    </div>
+	    <br />
+	    <div>U slučaju da je korisnik zaboravio postaviti Authorization header ili ga je postavio neispravno, vraćamo odgovarajuću poruku (4. i 5.poziv). U slučaju da autentikacija prođe ispravno, ali korisnik nema registriranih linkova, vraćamo poruku da dosad nije registrirao link (2.poziv). Nakon svakog poziva vraća se odgovarajući HTTP status code. Ovi slučajevi su obrađeni u 2, 4 i 5. pozivu u Statistics folderu.</div>
+	    <br />
+	   	<h4 style="text-align: center;">Кorisnički dio servisa</h4>
+	    <div>Drugi dio servisa je korisnički koji se sastoji od redirektati klijenta na konfiguriranu adresu sa konfiguriranim http statusom. Nakon što korisnik utipka url I pošalje zahtjev, pogledamo da li se taj url nalazi u našoj bazi i u slučaju da se nalazi, povećamo njegov broj pozivanja i redirektamo ga na njegov odgovarajući url koji nam je zapisan u bazi.</div>
+	    <div>Na primjer: <strong>https://localhost:8080/d2341axs -----> https://www.facebook.com</strong></div>
+	    <br />
+	    <div>U slučaju da je url imao redirectType 301, vraćamo HTTP status code 301, a u slučaju da je url imao redirectType 302, vraćamo HTTP status code 302. U slučaju da url ne postoji u našoj bazi onda vraćamo HTTP status code 404.</div>
+	</div>
+</div>
+
+</body>
+</html>

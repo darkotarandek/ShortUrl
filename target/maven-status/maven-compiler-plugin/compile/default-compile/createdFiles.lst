@@ -1,0 +1,7 @@
+com\urlshortener\UrlShortener\model\URL.class
+com\urlshortener\UrlShortener\UrlShortenerApplication.class
+com\urlshortener\UrlShortener\repository\URLRepository.class
+com\urlshortener\UrlShortener\repository\UserRepository.class
+com\urlshortener\UrlShortener\service\RandomGenerator.class
+com\urlshortener\UrlShortener\controller\WebController.class
+com\urlshortener\UrlShortener\model\User.class
